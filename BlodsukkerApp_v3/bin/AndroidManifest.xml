@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="dk.pyemus.blodsukkerapp_v3"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+
+<!-- Send Nød SMS -->
+<uses-permission android:name="android.permission.SEND_SMS" />
+<!-- Backup til skyen -->
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<!-- Backup til SD kortet -->
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/bayer_2"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+		android:hardwareAccelerated="false"> <!-- 		should disable hardware acceleration as AndroidPlot uses methods 
+														that are not currently supported by hardware acceleration -->
+        
+        <activity
+            android:name="aktiviteter.BlodsukkerMain_akt"
+            android:label="@string/app_name" 
+            android:launchMode="singleTask"> <!--  Its also probably important to set the 
+                                                   launchmode of your activity in the manifest to "singleTask" to prevent it from 
+            										running again when its already running, or else plugging in a USB device will 
+            										just launch a second instance of your application! -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
+        <activity android:name="aktiviteter.Indstillinger" >
+        </activity>
+        <activity android:name="aktiviteter.Historik_akt"></activity>
+        <activity android:name="aktiviteter.Kulhydrat_akt"></activity>
+        <activity android:name="aktiviteter.Appelsin_akt"></activity>
+        <activity android:name="aktiviteter.Insulinberegning_akt"></activity>
+        
+<!--         <receiver android:name="diverse.USB_broadcastReceiver" > -->
+<!--             <intent-filter> -->
+<!--                 <action android:name="dk.pyemus.blodsukkerapp_v3.AFSLUT" /> -->
+<!--             </intent-filter> -->
+<!--         </receiver> -->
+        <activity android:name="netvaerk.Network_komm"></activity>
+	
+	<!-- Til Robotium test -->
+	<uses-library android:name="android.test.runner" />
+        
+    </application>
+    
+<!--     Til Robotium test af app -->
+    <instrumentation 
+        android:targetPackage="dk.pyemus.blodsukkerapp_v3" 
+        android:name="android.test.InstrumentationTestRunner" />
+    
+
+</manifest>

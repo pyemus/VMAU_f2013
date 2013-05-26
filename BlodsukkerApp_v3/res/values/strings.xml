@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bayer Dia._v3</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Tips teksten -->
+    <string name="titel_tips">Vidste du...</string>
+    <string name="tips1">Tip 1 - at sukkersyge ikke smitter! \n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae massa nec elit pharetra adipiscing. Proin suscipit placerat lorem ut sagittis. Etiam mauris leo, ultricies ut molestie a, adipiscing ac tortor. Maecenas eu mauris eget ipsum fermentum faucibus eu eu lacus. Maecenas commodo, augue bibendum scelerisque cursus, nisi purus malesuada erat, at hendrerit purus sapien vitae mi. Donec risus elit, viverra vel fermentum sit amet, condimentum vel risus. Vivamus accumsan auctor massa eu accumsan. </string>
+    <string name="tips2">Tip 2 - at madvarer uden så meget sukker er sundest for dig\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae massa nec elit pharetra adipiscing. Proin suscipit placerat lorem ut sagittis. Etiam mauris leo, ultricies ut molestie a, adipiscing ac tortor. Maecenas eu mauris eget ipsum fermentum faucibus eu eu lacus. Maecenas commodo, augue bibendum scelerisque cursus, nisi purus malesuada erat, at hendrerit purus sapien vitae mi. Donec risus elit, viverra vel fermentum sit amet, condimentum vel risus. Vivamus accumsan auctor massa eu accumsan. </string>
+    <string name="tips3">Tip3\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae massa nec elit pharetra adipiscing. Proin suscipit placerat lorem ut sagittis. Etiam mauris leo, ultricies ut molestie a, adipiscing ac tortor. Maecenas eu mauris eget ipsum fermentum faucibus eu eu lacus. Maecenas commodo, augue bibendum scelerisque cursus, nisi purus malesuada erat, at hendrerit purus sapien vitae mi. Donec risus elit, viverra vel fermentum sit amet, condimentum vel risus. Vivamus accumsan auctor massa eu accumsan. </string>
+    <string name="tips4">Tip4\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae massa nec elit pharetra adipiscing. Proin suscipit placerat lorem ut sagittis. Etiam mauris leo, ultricies ut molestie a, adipiscing ac tortor. Maecenas eu mauris eget ipsum fermentum faucibus eu eu lacus. Maecenas commodo, augue bibendum scelerisque cursus, nisi purus malesuada erat, at hendrerit purus sapien vitae mi. Donec risus elit, viverra vel fermentum sit amet, condimentum vel risus. Vivamus accumsan auctor massa eu accumsan. </string>
+    <string name="tips5">Tip5\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae massa nec elit pharetra adipiscing. Proin suscipit placerat lorem ut sagittis. Etiam mauris leo, ultricies ut molestie a, adipiscing ac tortor. Maecenas eu mauris eget ipsum fermentum faucibus eu eu lacus. Maecenas commodo, augue bibendum scelerisque cursus, nisi purus malesuada erat, at hendrerit purus sapien vitae mi. Donec risus elit, viverra vel fermentum sit amet, condimentum vel risus. Vivamus accumsan auctor massa eu accumsan. </string>
+
+    <string name="GuideFrag1">For at få den bedste måling er der nogle simple, men vigtige råd du bør følge før du foretager målingen:\n\n\n
+        					  Vask og tør dine hænder omhyggeligt, inden du foretager målingen.\n\n
+        					  Sørg for at have alle nødvendige ting klar før du begynder at måle.\n\n
+        					  Tryk ikke teststrimles spids mod fingeren, mens du måler.\n\n
+        					  Lad apparat og teststrimler tilpasse sig til temperaturen på det sted, hvor du måler.\n</string>
+        					   
+    <string name="GuideFrag2_1">1. Put strimlen ind i måleenheden</string>
+    <string name="GuideFrag2_2">2. Påfør en dråbe blod på teststrimlen</string>
+    <string name="GuideFrag2_3">3. Efter måling, forbind måleenheden til telefonen og tryk fortsæt</string>
+    <string name="GuideFrag3_1">6,4</string>
+    <string name="GuideFrag3_2">Tilføj note</string>
+    <string name="GuideFrag3_3">Blodsukkerværdi:</string>
+    
+	<!--     Hjælp og Om dialog fra menu -->
+	<string name="help_titel">Hjælp</string>
+	<string name="help_dialog">1. </string>
+	<string name="om_titel">Om appen</string>
+	<string name="om_dialog">Denne app er udarbejdet i samarbejde med Bayer for at hjælpe 
+	    					diabetikere i deres hverdag. </string>
+</resources>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/kulhydrat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@xml/tiled_background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@xml/bg_linaer_gradient"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp" >
+
+        <RelativeLayout
+            android:id="@+id/relativ1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="@xml/ramme2"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/backup_parse_knap"
+                android:text="Backup til skyen"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/backup_parse_knap"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@xml/blue_button"
+                android:onClick="click"
+                android:text="Backup til skyen" />
+
+            <Button
+                android:id="@+id/restore_parse_knap"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/backup_parse_knap"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@xml/blue_button"
+                android:onClick="click"
+                android:text="Restorér fra skyen" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relativ1"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@xml/ramme2"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/backup_SD_knap"
+                android:text="Backup til SD kortet"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/backup_SD_knap"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/restore_parse_knap"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@xml/blue_button"
+                android:onClick="click"
+                android:text="Backup til SD kort" />
+
+            <Button
+                android:id="@+id/restore_SD_knap"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/backup_SD_knap"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@xml/blue_button"
+                android:onClick="click"
+                android:text="Restorér fra SD" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>

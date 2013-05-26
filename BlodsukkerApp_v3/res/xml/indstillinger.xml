@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="usb_next"
+            android:summary="Gør brug af Bayers USB Contour Next"
+            android:title="Contour USB Next" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="usb"
+            android:summary="Gør brug af Bayers USB Contour"
+            android:title="Contour USB" />
+    </PreferenceCategory>
+    <PreferenceCategory>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="tips"
+            android:summaryOff="Slå tips og tricks til"
+            android:summaryOn="Slå tips og tricks fra"
+            android:title="Opstartstips" />
+    </PreferenceCategory>
+    <PreferenceCategory>
+        <EditTextPreference
+            
+            android:inputType="number"
+            android:key="dogndosis"
+            android:summary="Indtast døgndosis af insulinenheder (IE)"
+            android:title="Doegndosis" 
+            >
+        </EditTextPreference>
+        <EditTextPreference
+            android:inputType="number"
+            android:key="paarorende"
+            android:summary="Indtast nr. til pårørende"
+            android:title="Nød SMS ved lavt blodsukker" 
+            >
+        </EditTextPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

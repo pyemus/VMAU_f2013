@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/kulhydrat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@xml/tiled_background"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@xml/bg_linaer_gradient"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/appelsinListe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#77FFFFFF" >
+
+            <!-- <TextView -->
+            <!-- android:id="@+id/appelsinTeskt" -->
+            <!-- android:layout_width="fill_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:text="bla"/> -->
+        </ListView>
+    </FrameLayout>
+
+</FrameLayout>

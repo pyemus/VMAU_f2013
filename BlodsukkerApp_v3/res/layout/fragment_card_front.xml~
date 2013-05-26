@@ -1,0 +1,7 @@
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/AppelsinImageViewIFragmentCardFront"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/"
+    android:scaleType="centerCrop"
+    android:contentDescription="description_image_1" />

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<diverse.FrameLayoutPct xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/guidefrag2"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@xml/tiled_background">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@xml/tiled_background_white"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@xml/ramme"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/guideText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingTop="25dp"
+                android:text="@string/GuideFrag2_1"
+                android:textColor="#3e85b7" />
+                        
+            <ImageView
+                android:id="@+id/enhed_ikon"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:layout_below="@+id/guideText2"
+                android:layout_centerHorizontal="true"
+
+                android:src="@drawable/maaleenhed" />
+
+            <ImageView
+                android:id="@+id/strimmel_ikon"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_below="@+id/enhed_ikon"
+                android:layout_centerHorizontal="true"
+				android:rotation="315.0"
+                android:src="@drawable/strimmel" />
+
+            <TextView
+                android:id="@+id/guideText2_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/strimmel_ikon"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="50dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                
+                android:text="@string/GuideFrag2_2"
+                android:textColor="#3e85b7" />
+            
+			<ImageView
+                android:id="@+id/finger_ikon"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:layout_below="@+id/guideText2_2"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/finger" />
+
+            <ImageView
+                android:id="@+id/bloodDrop2"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_below="@+id/finger_ikon"
+                android:layout_centerHorizontal="true"
+                android:rotation="0.0"
+                android:src="@drawable/draabe" />
+            
+<!--              <ImageView -->
+<!--                 android:id="@+id/strimmel_ikon2" -->
+<!--                 android:layout_width="33dp" -->
+<!--                 android:layout_height="33dp" -->
+<!--                 android:layout_below="@+id/bloodDrop2" -->
+<!--                 android:layout_centerHorizontal="true" -->
+<!--                 android:paddingTop="25dp" -->
+<!--                 android:src="@drawable/strimmel" /> -->
+
+            <TextView
+                android:id="@+id/guideText2_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bloodDrop2"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingTop="50dp"
+                android:text="@string/GuideFrag2_3"
+                android:textColor="#3e85b7" />
+
+            <ImageView
+                android:id="@+id/next_pil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+				android:layout_below="@+id/guideText2_3"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:paddingBottom="15dp"
+                android:rotation="0.0"
+                android:paddingTop="30dp"
+                android:src="@drawable/forsaet_knap" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</diverse.FrameLayoutPct>

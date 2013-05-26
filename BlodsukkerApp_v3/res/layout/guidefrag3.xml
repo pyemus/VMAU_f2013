@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<diverse.FrameLayoutPct xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/guidefrag3"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@xml/tiled_background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@xml/tiled_background_white"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@xml/ramme"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/guideText3_resultatetEr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="25dp"
+                android:paddingTop="55dp"
+                android:text="@string/GuideFrag3_3"
+                android:textColor="#6e6e6e" />
+
+            <TextView
+                android:id="@+id/guideText3_maaleresultat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/guideText3_resultatetEr"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="105dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:text="@string/GuideFrag3_1"
+                android:textColor="#3e85b7"
+                android:textSize="96dp" />
+
+            <TextView
+                android:id="@+id/add_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/guideText3_maaleresultat"
+                android:layout_centerHorizontal="true"
+                android:text="Tilføj note"
+                android:textColor="#6e6e6e" />
+
+            <ImageButton
+                android:id="@+id/note_knap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/add_note"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/boble" />
+
+            <!-- <Button -->
+            <!-- android:id="@+id/note_knap" -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:layout_below="@+id/guideText3_maaleresultat" -->
+            <!-- android:layout_centerHorizontal="true" -->
+            <!-- android:text="Tilføj note" -->
+            <!-- android:textColor="#6e6e6e" /> -->
+
+
+            <!-- <TextView -->
+            <!-- android:id="@+id/guideText3_add" -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:layout_below="@+id/guideText3_maaleresultat" -->
+            <!-- android:layout_centerHorizontal="true" -->
+            <!-- android:layout_toRightOf="@+id/note_knap" -->
+            <!-- android:paddingBottom="5dp" -->
+            <!-- android:paddingLeft="25dp" -->
+            <!-- android:paddingRight="25dp" -->
+            <!-- android:paddingTop="25dp" -->
+            <!-- android:text="@string/GuideFrag3_2" -->
+            <!-- android:textColor="#3e85b7" /> -->
+
+
+            <!-- <ImageView -->
+            <!-- android:id="@+id/next_pil" -->
+            <!-- android:layout_width="104dp" -->
+            <!-- android:layout_height="155dp" -->
+            <!-- android:layout_alignParentBottom="true" -->
+            <!-- android:layout_centerHorizontal="true" -->
+            <!-- android:rotation="-90.0" -->
+            <!-- android:src="@drawable/right_arrow" /> -->
+
+            <ImageView
+                android:id="@+id/next_tekst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:paddingBottom="15dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/forsaet_kun" />
+
+            <ImageView
+                android:id="@+id/next_pil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/next_tekst"
+                android:paddingBottom="15dp"
+                android:src="@drawable/forsaet_pil" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</diverse.FrameLayoutPct>
