@@ -49,13 +49,14 @@ public class BlodsukkerMain_testing extends ActivityInstrumentationTestCase2<Blo
     	solo.clickOnView(gf.getView().findViewById(R.id.next_pil));
     	
     	assertTrue("guidefrag2 skal dukke op", solo.waitForFragmentByTag("Guide_frag2", 3000));
-    	
+    	Thread.sleep(3000);
+//    	getInstrumentation().waitForIdleSync();
     	fragmenter.Guide_frag2 gf2 = (fragmenter.Guide_frag2)
 					getActivity()
 				   .getFragmentManager()
 				   .findFragmentByTag("Guide_frag2");
     	assertNotNull(gf2);
-    	getInstrumentation().waitForIdleSync();
+    	
     	assertNotNull(gf2.getView());
     	assertNotNull(gf2.getView().findViewById(R.id.next_pil));
     	
@@ -64,21 +65,27 @@ public class BlodsukkerMain_testing extends ActivityInstrumentationTestCase2<Blo
         assertEquals("Resultatet er ikke godkendt", expected2, actual2);
        	solo.clickOnView(gf2.getView().findViewById(R.id.next_pil));
        	
-       	
+       	Thread.sleep(3000);
        	assertTrue("guidefrag3 skal dukke op", solo.waitForFragmentByTag("Guide_frag3", 3000));
     	fragmenter.Guide_frag3 gf3 = (fragmenter.Guide_frag3)
 					getActivity()
 				   .getFragmentManager()
 				   .findFragmentByTag("Guide_frag3");
-    	getInstrumentation().waitForIdleSync();
     	
-    	solo.clickOnImage(R.id.add_note);
+    	
+    	
+       	solo.clickOnView(gf3.getView().findViewById(R.id.note_knap));
     	solo.typeText(0, "Dette er en ny note");
     	solo.clickOnText("OK");
-        boolean expected3 = true;
+        
+       	solo.clickOnView(gf3.getView().findViewById(R.id.next_pil));
+       	boolean expected3 = true;
         boolean actual3 = solo.waitForFragmentByTag("Guide_frag3", 3000);
         assertEquals("Resultatet er ikke godkendt", expected3, actual3);
-       	solo.clickOnView(gf3.getView().findViewById(R.id.next_pil));
+        
+        boolean forventet =solo.searchText("Dette er en ny note");
+        boolean faktisk=true;
+        assertEquals("Der skete en tekstfejl",forventet, faktisk);
     }
     
     public void testDatabase()throws Exception {

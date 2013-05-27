@@ -9,6 +9,7 @@ import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.SimpleXYSeries;
 import com.androidplot.xy.XYPlot;
 import com.androidquery.AQuery;
+import com.bugsense.trace.BugSenseHandler;
 
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingActivity;
@@ -69,6 +70,7 @@ public class Kulhydrat_akt extends SlidingActivity implements FragmentManager.On
 	@Override
 	public void onCreate( Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		BugSenseHandler.initAndStartSession(getApplicationContext(), "25f4284a"); // bugsense ID
 		overridePendingTransition(R.anim.aktivitet_fade_in, R.anim.aktivitet_fade_out);
 		setContentView(R.layout.kulhydrat);
 		setBehindContentView(R.layout.content_frame);
@@ -132,6 +134,9 @@ public class Kulhydrat_akt extends SlidingActivity implements FragmentManager.On
 
 	      });
 	    
+  		fm.beginTransaction()
+			.replace(R.id.content_frame, new MenuListFragment())
+			.commit();
 	}
 	
 
@@ -150,10 +155,6 @@ public class Kulhydrat_akt extends SlidingActivity implements FragmentManager.On
 	    if ( keyCode == KeyEvent.KEYCODE_MENU ) {
 	        Log.d("MENU", "MENU pressed");
 	    	  getSlidingMenu().showMenu();//Viser Slidemenu,
-	    	  
-		  		fm.beginTransaction()
-				.replace(R.id.content_frame, new MenuListFragment())
-				.commit();
 	        return true;
 	    }
 	    return super.onKeyDown(keyCode, event);
@@ -256,5 +257,9 @@ public class Kulhydrat_akt extends SlidingActivity implements FragmentManager.On
 //			.replace(R.id.content_frame, new MenuListFragment())
 //			.commit();
 //		}
+		
+		public void slideTilbage(){
+			getSlidingMenu().toggle(true);
+		}
 
 	}

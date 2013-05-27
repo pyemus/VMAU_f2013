@@ -27,8 +27,19 @@
     
 	<!--     Hjælp og Om dialog fra menu -->
 	<string name="help_titel">Hjælp</string>
-	<string name="help_dialog">1. </string>
+	<string name="help_dialog">1. Menuerne bruges ved at klikke på op pilen eller Bayer logoet\n\n
+	    					   2. Historik kan vise din data i en graf\n\n
+	    					   3. Fødevarelisten viser en liste over alm. fødevarer og deres kulhydratindhold\n\n
+	    					   4. I Insulinberegning kan du udregne dit insulinbehov for et måltid ud fra 500reglen og din døgndosis af insulin\n\n
+	    					   5. Der kan laves back-up til parse.com af blodsukkerdata i appen\n\n
+	    					   </string>
 	<string name="om_titel">Om appen</string>
 	<string name="om_dialog">Denne app er udarbejdet i samarbejde med Bayer for at hjælpe 
-	    					diabetikere i deres hverdag. </string>
+	    					diabetikere i deres hverdag. \n\n
+	    					
+	    					Applikationen er lavet som en del af et android-projekt til forårskurset 2013 af 
+        					Mobil Applikations Udvikling(VMAU) ved DTU campus Ballerup.
+      
+        					\n\nDette er første release af app´en, så bugs kan være til stede og kan 
+        					rapporteres til: pyemus@gmail.com</string>
 </resources>

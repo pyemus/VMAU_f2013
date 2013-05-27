@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
+import com.bugsense.trace.BugSenseHandler;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingActivity;
 
@@ -40,6 +41,7 @@ public class Insulinberegning_akt extends SlidingActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		BugSenseHandler.initAndStartSession(getApplicationContext(), "25f4284a"); // bugsense ID
 		overridePendingTransition(R.anim.aktivitet_fade_in, R.anim.aktivitet_fade_out);
 		setContentView(R.layout.insulin);
 		setBehindContentView(R.layout.content_frame);
@@ -61,7 +63,10 @@ public class Insulinberegning_akt extends SlidingActivity {
 		aq.id(R.id.beregn_knap).clicked(this, "click");
 		myPreference = PreferenceManager.getDefaultSharedPreferences(this);
 		// dogndosis_int = (TextView)findViewById(R.id.edittextstatus);
-
+		
+		fm.beginTransaction()
+		.replace(R.id.content_frame, new MenuListFragment())
+		.commit();
 	}
 
 	public void click(View view) {
@@ -168,10 +173,7 @@ public class Insulinberegning_akt extends SlidingActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
 			getSlidingMenu().showMenu();// Viser Slidemenu,
-
-			fm.beginTransaction()
-					.replace(R.id.content_frame, new MenuListFragment())
-					.commit();
+			
 		} else {
 			Log.d("Menu", "Ikke håndteret");
 		}
@@ -191,6 +193,10 @@ public class Insulinberegning_akt extends SlidingActivity {
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+	
+	public void slideTilbage(){
+		getSlidingMenu().toggle(true);
 	}
 
 }

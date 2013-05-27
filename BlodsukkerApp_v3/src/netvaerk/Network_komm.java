@@ -75,6 +75,10 @@ public class Network_komm extends SlidingActivity {
 
 		myPreference = PreferenceManager.getDefaultSharedPreferences(this);
 
+		fm.beginTransaction()
+		.replace(R.id.content_frame, new MenuListFragment())
+		.commit();
+		
 		// init parse id og nøgle
 		Parse.initialize(this, "SHCxZtPXyvPLTkC7FtYATlWhvRy4jAdtCaaAGYNx",
 				                "U1MmOuvjO5lMNmhW9Xfgwi0KbXSi85ntBgBTSvRZ");
@@ -206,9 +210,6 @@ public class Network_komm extends SlidingActivity {
 		if (item.getItemId() == android.R.id.home) {
 			getSlidingMenu().showMenu();// Viser Slidemenu,
 
-			fm.beginTransaction()
-					.replace(R.id.content_frame, new MenuListFragment())
-					.commit();
 		} else {
 			Log.d("Menu", "Ikke håndteret");
 		}
@@ -228,6 +229,10 @@ public class Network_komm extends SlidingActivity {
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+	
+	public void slideTilbage(){
+		getSlidingMenu().toggle(true);
 	}
 
 }

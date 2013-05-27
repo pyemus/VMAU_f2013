@@ -10,7 +10,7 @@
 
 <!-- Send Nød SMS -->
 <uses-permission android:name="android.permission.SEND_SMS" />
-<!-- Backup til skyen -->
+<!-- Backup til skyen, samt crash rapporter-->
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <!-- Backup til SD kortet -->

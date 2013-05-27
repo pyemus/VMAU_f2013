@@ -34,6 +34,7 @@ import android.widget.Toast;
 	import com.androidplot.xy.SimpleXYSeries;
 import com.androidplot.series.XYSeries;
 import com.androidplot.xy.*;
+import com.bugsense.trace.BugSenseHandler;
 
 	import eu.erikw.*;
 import eu.erikw.PullToRefreshListView.OnRefreshListener;
@@ -41,7 +42,7 @@ import eu.erikw.PullToRefreshListView.OnRefreshListener;
 public class Historik_akt extends SlidingActivity {
 	
 		ActionBar ab=null;
-		private FragmentManager fm;
+		public FragmentManager fm;
 		public String note_input;
 		TextView note_inn_textview;
 		DBAdapter db = new DBAdapter(this);
@@ -54,11 +55,13 @@ public class Historik_akt extends SlidingActivity {
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
+			BugSenseHandler.initAndStartSession(getApplicationContext(), "25f4284a"); // bugsense ID
 			overridePendingTransition(R.anim.aktivitet_fade_in, R.anim.aktivitet_fade_out);
 			setContentView(R.layout.historik);
 			setBehindContentView(R.layout.content_frame);
 			getSlidingMenu().setBehindOffset(100);
 			getSlidingMenu().setMode(SlidingMenu.LEFT);
+			
 
 
 			AQuery aq = new AQuery(this);
@@ -108,9 +111,15 @@ public class Historik_akt extends SlidingActivity {
 	        // To get rid of them call disableAllMarkup():
 	        mySimpleXYPlot.disableAllMarkup();
 	        //****************************************************************************************
-
+	  		fm.beginTransaction()
+			.replace(R.id.content_frame, new MenuListFragment())
+			.commit();
+	  		
+	  		
 
 		}
+		
+
 
 
 			// Kaldes hver gang menuen skal vises
@@ -126,9 +135,6 @@ public class Historik_akt extends SlidingActivity {
 				if(item.getItemId()==android.R.id.home){
 			    	  getSlidingMenu().showMenu();//Viser Slidemenu,
 			    	  
-				  		fm.beginTransaction()
-						.replace(R.id.content_frame, new MenuListFragment())
-						.commit();
 				}
 				else {
 					Log.d("Menu","Ikke håndteret");
@@ -143,9 +149,7 @@ public class Historik_akt extends SlidingActivity {
 			        Log.d("MENU", "MENU pressed");
 			    	  getSlidingMenu().showMenu();//Viser Slidemenu,
 			    	  
-				  		fm.beginTransaction()
-						.replace(R.id.content_frame, new MenuListFragment())
-						.commit();
+
 			        return true;
 			    }
 			    return super.onKeyDown(keyCode, event);
@@ -180,6 +184,10 @@ public class Historik_akt extends SlidingActivity {
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 			ab.show();
+		}
+		
+		public void slideTilbage(){
+			getSlidingMenu().toggle(true);
 		}
 		
 //	@Override

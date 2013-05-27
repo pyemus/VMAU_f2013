@@ -3,10 +3,16 @@ package fragmenter;
 
 import java.util.Random;
 
+import netvaerk.Network_komm;
+
 import dk.pyemus.blodsukkerapp_v3.R;
+import aktiviteter.BlodsukkerMain_akt;
 import aktiviteter.Historik_akt;
+import aktiviteter.Insulinberegning_akt;
+import aktiviteter.Kulhydrat_akt;
 import android.R.fraction;
 import android.app.ActionBar.LayoutParams;
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Dialog;
 import android.app.Fragment;
@@ -34,6 +40,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class MenuListFragment extends ListFragment  {
+	
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.list, null);
@@ -124,34 +131,58 @@ public class MenuListFragment extends ListFragment  {
 
 		switch (position) {
 		case 0:
-			Intent i0 = new Intent(getActivity(),aktiviteter.BlodsukkerMain_akt.class);
-			i0.setFlags(i0.FLAG_ACTIVITY_SINGLE_TOP);
-			startActivity(i0);
-			
+			Activity blod = getActivity();
+			if(blod instanceof BlodsukkerMain_akt){
+				((BlodsukkerMain_akt)blod).slideTilbage();
+			}else{
+				Intent i0 = new Intent(getActivity(),aktiviteter.BlodsukkerMain_akt.class);
+				i0.setFlags(i0.FLAG_ACTIVITY_SINGLE_TOP);
+				startActivity(i0);
+			}
 			break;
 
 		case 1:
-			Intent i1 =new Intent(getActivity() , aktiviteter.Historik_akt.class);
-			i1.setFlags(i1.FLAG_ACTIVITY_SINGLE_TOP);
-			startActivity(i1);
+			Activity hist=getActivity();
+			if(hist instanceof Historik_akt){
+				((Historik_akt)hist).slideTilbage();
+			}else{
+				Intent i1 =new Intent(getActivity() , aktiviteter.Historik_akt.class);
+				i1.setFlags(i1.FLAG_ACTIVITY_SINGLE_TOP);
+				startActivity(i1);
+			}
 			break;
 		
 		case 2:
-			Intent i2 =new Intent(getActivity() , aktiviteter.Kulhydrat_akt.class);
-			i2.setFlags(i2.FLAG_ACTIVITY_SINGLE_TOP);
-			startActivity(i2);
+			Activity kul = getActivity();
+			if(kul instanceof Kulhydrat_akt){
+				((Kulhydrat_akt)kul).slideTilbage();
+			}else{
+				Intent i2 =new Intent(getActivity() , aktiviteter.Kulhydrat_akt.class);
+				i2.setFlags(i2.FLAG_ACTIVITY_SINGLE_TOP);
+				startActivity(i2);
+			}
 			break;
 		
 		case 3:
-			Intent i3 =new Intent(getActivity() , aktiviteter.Insulinberegning_akt.class);
-			i3.setFlags(i3.FLAG_ACTIVITY_SINGLE_TOP);
-			startActivity(i3);
+			Activity insu = getActivity();
+			if(insu instanceof Insulinberegning_akt){
+				((Insulinberegning_akt)insu).slideTilbage();
+			}else{
+				Intent i3 =new Intent(getActivity() , aktiviteter.Insulinberegning_akt.class);
+				i3.setFlags(i3.FLAG_ACTIVITY_SINGLE_TOP);
+				startActivity(i3);
+			}
 			break;
 			
 		case 4:
-			Intent i4 =new Intent(getActivity() , netvaerk.Network_komm.class);
-			i4.setFlags(i4.FLAG_ACTIVITY_SINGLE_TOP);
-			startActivity(i4);
+			Activity backup = getActivity();
+			if(backup instanceof Network_komm){
+				((Network_komm)backup).slideTilbage();
+			}else{
+				Intent i4 =new Intent(getActivity() , netvaerk.Network_komm.class);
+				i4.setFlags(i4.FLAG_ACTIVITY_SINGLE_TOP);
+				startActivity(i4);
+			}
 			break;
 		
 		case 5:

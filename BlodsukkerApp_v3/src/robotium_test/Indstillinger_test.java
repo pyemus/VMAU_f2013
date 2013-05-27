@@ -40,44 +40,42 @@ public class Indstillinger_test extends ActivityInstrumentationTestCase2<Indstil
 		solo.clickOnCheckBox(2);
 		
 		solo.clickOnText("Doegndosis");
-//    	solo.waitForText("Cancel",1,2000);
-		solo.clearEditText(0);
-		
-    	solo.typeText(0, "33");
-//    	solo.sleep(250);
-//    	solo.clickOnText("CANCEL");
-//    	solo.sleep(250);
+		solo.clearEditText(0);		
+    	solo.enterText(0, "33");
+    	solo.goBack();
     	solo.clickOnText("OK");
+    	
 		solo.clickOnText("Doegndosis");
-//    	solo.waitForText("Cancel",1,2000);
 		solo.clearEditText(0);
-    	solo.typeText(0, "22");
+    	solo.enterText(0, "22");
+    	boolean actual1 =solo.searchText("22");
     	solo.clickOnText("OK");
     	solo.sleep(250);
+
     	solo.clickOnText("Nød SMS ved lavt blodsukker");
-//    	solo.waitForText("Cancel",1,2000);
     	solo.clearEditText(0);
-    	solo.typeText(0, "5555");
-    	solo.clearEditText(0);
-    	solo.typeText(0, "5556");
-//    	solo.clickOnText("Cancel");
-    	solo.clickOnText("OK");
-    	solo.clickOnText("Nød SMS ved lavt blodsukker");
-//    	solo.waitForText("Cancel",1,2000);
+    	solo.enterText(0, "5555");
+    	solo.goBack();
     	solo.clearEditText(0);
     	solo.typeText(0, "5556");
     	solo.clickOnText("OK");
-		solo.sleep(1000);
-		solo.goBack();
     	
-    	
-    	
+    	solo.clickOnText("Nød SMS ved lavt blodsukker");
+    	solo.clearEditText(0);
+    	solo.typeText(0, "5556");
+    	boolean actual2 = solo.searchText("5556");
+    	solo.clickOnText("OK");
+		
     	//Vi forventer at resultat er der
         boolean expected = true;
-        //Vi søger efter det forventede
-        boolean actual = solo.searchText("En appelsin indeholder 10g. kulhydrater.");
+        
         //Hævder om resultatet er godkendt 
-        assertEquals("Resultatet er ikke godkendt", expected, actual);
+        assertEquals("Resultatet er ikke godkendt", expected, actual1);
+        assertEquals("Resultatet er ikke godkendt", expected, actual2);
+        
+		solo.goBack();
+		solo.sleep(1000);
+
     }
 	
 	

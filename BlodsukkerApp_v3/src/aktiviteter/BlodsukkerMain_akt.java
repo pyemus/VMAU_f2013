@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Random;
 
 import com.androidquery.AQuery;
+import com.bugsense.trace.BugSenseHandler;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingActivity;
 
@@ -86,7 +87,8 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		BugSenseHandler.initAndStartSession(getApplicationContext(), "25f4284a"); // bugsense ID
+
 		setContentView(R.layout.blodsukker_main);
 		setBehindContentView(R.layout.content_frame);
 		getSlidingMenu().setBehindOffset(100);
@@ -135,7 +137,7 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 
 						Toast.makeText(
 								getApplicationContext(),
-								"Alm. klik" , Toast.LENGTH_SHORT).show();
+								"Langt tryk for menu" , Toast.LENGTH_SHORT).show();
 					}
 				});
 		
@@ -190,7 +192,13 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 		if (tipsVedOpstart == true) {
 			tips();
 		}
-		overridePendingTransition(R.anim.aktivitet_fade_in, R.anim.aktivitet_fade_out);
+		
+
+  		fm.beginTransaction()
+		.replace(R.id.content_frame, new MenuListFragment())
+		.commit();
+  		
+  		seDB();
 	}
 	
 	
@@ -233,6 +241,15 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 //        public void tryk(){
 //        	
 //        }
+	}
+	
+	
+	@Override
+	public void onResume() {
+	    super.onResume();
+	    //Test for fragement er synligt...ellers kaldes slidemenu efter skærm sluk/tænd
+	    overridePendingTransition(R.anim.aktivitet_fade_in, R.anim.aktivitet_fade_out);
+	    getSlidingMenu().toggle(true);
 	}
 	
 //	//*************CONTEXT menu ved langt klik*****************
@@ -301,8 +318,8 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 	
 		public boolean onCreateOptionsMenu(Menu menu) {
 			menu.add(Menu.NONE, 102, Menu.NONE, "Smid i databasen").setIcon(android.R.drawable.btn_plus);
-			menu.add(Menu.NONE, 101, Menu.NONE, "Se datababsen").setIcon(android.R.drawable.btn_dropdown);
-			menu.add(Menu.NONE, 107, Menu.NONE, "Skjul datababsen").setIcon(android.R.drawable.star_off);
+			menu.add(Menu.NONE, 101, Menu.NONE, "Se databasen").setIcon(android.R.drawable.btn_dropdown);
+			menu.add(Menu.NONE, 107, Menu.NONE, "Skjul databasen").setIcon(android.R.drawable.star_off);
 			menu.add(Menu.NONE, 108, Menu.NONE, "Slet databasen").setIcon(android.R.drawable.ic_menu_delete);
 			return true;
 		}
@@ -317,46 +334,13 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 		@Override
 		public boolean onOptionsItemSelected(MenuItem item) {
 			if (item.getItemId() == 101) {
-				db.open();
-				if(!db.checkForDbContent()){
-					Toast.makeText(getApplicationContext(),
-							"Tom\nDer er ikke målt noget blodsukkerværdier endnu" , Toast.LENGTH_LONG).show();
-				}
-				
-				
-				// db.open();
-				Cursor cursor = db.getAlleMaalingerIterated();
-				
-				// The desired columns to be bound
-				String[] columns = new String[] { 
-						DBAdapter.KEY_ROWID,
-						DBAdapter.KEY_TID, 
-						DBAdapter.KEY_DATO, 
-						DBAdapter.KEY_BLODSUKKERVAERDI,
-						DBAdapter.KEY_BLODSUKKERSTATUS,
-						DBAdapter.KEY_NOTE };
-
-				// the XML defined views which the data will be bound to
-				int[] to = new int[] { 
-						R.id.maalingnr, 
-						R.id.tid, 
-						R.id.dato, 
-						R.id.blodvaerdi,
-						R.id.blodstatus,
-						R.id.note};
-
-				blodsukkervaerdier = new SimpleCursorAdapter(this, R.layout.db_celle_info, cursor,
-						columns, to, 0);
-				
-				// Find &Sæt listadaptoren
-				blodsukkerliste.setAdapter(blodsukkervaerdier);
-				blodsukkerliste.setVisibility(View.VISIBLE);
-				db.close();
+				seDB();
 			} else if (item.getItemId() == 102) {
 			//		---Tilføj en blodsukkermåling----
 				db.open();
 				long id = db.maaling(1337, 22042013, 4.1, "før måltid", "det gik godt");
 				db.close();
+				seDB();
 			} 
 			else if (item.getItemId() == 107) {
 				blodsukkerliste.setVisibility(View.INVISIBLE);
@@ -369,15 +353,50 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 			else if(item.getItemId()==android.R.id.home){
 		    	  getSlidingMenu().showMenu();//Viser Slidemenu,
 		    	  
-			  		fm.beginTransaction()
-					.replace(R.id.content_frame, new MenuListFragment())
-					.commit();
 			}
 			
 			else {
 				Log.d("Menu","Ikke håndteret");
 			}
 			return true;
+		}
+		
+		public void seDB(){
+			db.open();
+			if(!db.checkForDbContent()){
+				Toast.makeText(getApplicationContext(),
+						"Tom\nDer er ikke målt noget blodsukkerværdier endnu" , Toast.LENGTH_LONG).show();
+			}
+			
+			
+			// db.open();
+			Cursor cursor = db.getAlleMaalingerIterated();
+			
+			// The desired columns to be bound
+			String[] columns = new String[] { 
+					DBAdapter.KEY_ROWID,
+					DBAdapter.KEY_TID, 
+					DBAdapter.KEY_DATO, 
+					DBAdapter.KEY_BLODSUKKERVAERDI,
+					DBAdapter.KEY_BLODSUKKERSTATUS,
+					DBAdapter.KEY_NOTE };
+
+			// the XML defined views which the data will be bound to
+			int[] to = new int[] { 
+					R.id.maalingnr, 
+					R.id.tid, 
+					R.id.dato, 
+					R.id.blodvaerdi,
+					R.id.blodstatus,
+					R.id.note};
+
+			blodsukkervaerdier = new SimpleCursorAdapter(this, R.layout.db_celle_info, cursor,
+					columns, to, 0);
+			
+			// Find &Sæt listadaptoren
+			blodsukkerliste.setAdapter(blodsukkervaerdier);
+			blodsukkerliste.setVisibility(View.VISIBLE);
+			db.close();
 		}
 	
 	public void clickkkk(View view) throws IOException, InterruptedException{
@@ -470,7 +489,10 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 	public void Kald_hovedskærm(){
 		Guide_frag3 gf3 = new Guide_frag3();
 		
-		note_inn_textview.setText("Tilføjet note: "+note_input);
+//		if(!note_inn_textview.getText().equals("")){
+//			note_inn_textview.setText("Tilføjet note: "+note_input);
+//		}
+
 		fm.findFragmentById(R.id.guidefrag3);
 		FragmentTransaction ft = fm.beginTransaction();
 				
@@ -479,7 +501,7 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 			.addToBackStack(null)
 			.commit();
 		
-		//Fjerne alle fragmenter fra backstacken efter animation
+		//Fjern alle fragmenter fra backstacken efter animation
 		Handler handler = new Handler(); 
 	    handler.postDelayed(new Runnable() { 
 	         public void run() { 
@@ -514,7 +536,9 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 		
 	}
 	
-
+	public void slideTilbage(){
+		getSlidingMenu().toggle(true);
+	}
 
 
 }

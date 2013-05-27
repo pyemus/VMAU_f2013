@@ -1,5 +1,7 @@
 package aktiviteter;
 
+import com.bugsense.trace.BugSenseHandler;
+
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ public class Indstillinger extends PreferenceActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		BugSenseHandler.initAndStartSession(getApplicationContext(), "25f4284a"); // bugsense ID
 		addPreferencesFromResource(R.xml.indstillinger);
 		mListPreference = (ListPreference) getPreferenceScreen()
 				.findPreference(KEY_LIST_PREFERENCE);
