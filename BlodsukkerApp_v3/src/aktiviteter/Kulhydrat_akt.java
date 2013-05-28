@@ -120,12 +120,16 @@ public class Kulhydrat_akt extends SlidingActivity implements FragmentManager.On
 	                // If there is no saved instance state, add a fragment representing the
 	                // front of the card to this activity. If there is saved instance state,
 	                // this fragment will have already been added to the activity.
+	        	if (position==0){
 	                getFragmentManager()
 	                        .beginTransaction()
 	                        .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_ind_left,R.anim.slide_out_right)
 	                        .replace(R.id.kulhydrat, new fragmenter_kulhydrat.CardFrontFragment())
 	                        .addToBackStack(null)
 	                        .commit();
+	        	}else{
+	        		Toast.makeText(getApplicationContext(), "Kun appelsin er ledig", Toast.LENGTH_SHORT).show();
+	        	}
 //	            } else {
 //	                mShowingBack = (getFragmentManager().getBackStackEntryCount() > 0);
 //	            }
