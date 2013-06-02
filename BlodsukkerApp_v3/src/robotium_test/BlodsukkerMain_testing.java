@@ -92,7 +92,7 @@ public class BlodsukkerMain_testing extends ActivityInstrumentationTestCase2<Blo
     	solo.clickOnMenuItem("Slet databasen");
     	solo.clickOnMenuItem("Smid i databasen");
     	solo.clickOnMenuItem("Smid i databasen");
-    	solo.clickOnMenuItem("Se datababsen");
+    	solo.clickOnMenuItem("Se databasen");
     	
     	//Vi forventer at resultat er der
         boolean expected = true;
@@ -104,13 +104,13 @@ public class BlodsukkerMain_testing extends ActivityInstrumentationTestCase2<Blo
 
     
     public void testTilfoejNoteTilDBMaaling()throws Exception {
-    	solo.clickOnMenuItem("Se datababsen");
+    	solo.clickOnMenuItem("Se databasen");
     	//Tager en måling og opdaterer den tilhørerne tekst
     	solo.clickLongOnText("Måling:");
     	solo.clickOnText("Opdatér Note");
     	solo.typeText(0, "Dette er en ny note");
     	solo.clickOnText("OK");
-    	solo.clickOnMenuItem("Se datababsen");
+    	solo.clickOnMenuItem("Se databasen");
     	
     	//Vi forventer at resultat er der
         boolean expected = true;

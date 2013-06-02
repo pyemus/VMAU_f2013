@@ -174,13 +174,17 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 					@Override
 					public void run() {
 						blodsukkerliste.onRefreshComplete();
-						
+//						boolean nogetIListen =;
+						if(blodsukkerliste.getCount()!=0){
 						Cursor cursor = (Cursor) blodsukkerliste.getItemAtPosition(1);
+
 						værdi = cursor.getString(cursor.getColumnIndexOrThrow("blodsukkervaerdi"));
+						
 						double double_værdi=Double.parseDouble(værdi);
 						//Hvis blodsukkerniveauet er under 4, er det lavt. Sendt sms
 						if(double_værdi<4.0){
 							send_nød_SMS();
+						}
 						}
 					}
 				}, 500);
