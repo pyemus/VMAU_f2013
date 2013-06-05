@@ -1,0 +1,58 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@xml/tiled_background"
+    android:orientation="vertical"
+    tools:context=".USB_komm" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@xml/bg_linaer_gradient"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dip"
+                android:layout_marginLeft="5dip"
+                android:background="@xml/green_button"
+                android:text="Blodsukkerguide\ntil måling" />
+
+            <TextView
+                android:id="@+id/note_input"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text=" " 
+                android:layout_above="@id/maaling"
+                android:layout_marginRight="5dip"
+                android:layout_toRightOf="@id/button1"/>
+
+            <TextView
+                android:id="@+id/maaling"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Seneste målinger: "
+                android:layout_marginRight="5dip" 
+                android:layout_toRightOf="@id/button1"/>
+
+            <eu.erikw.PullToRefreshListView
+                android:layout_below="@id/maaling"
+                android:layout_toRightOf="@id/button1"
+                android:id="@+id/listView1"
+                android:layout_width="fill_parent"
+                android:layout_marginRight="5dip"
+                android:layout_height="fill_parent"
+                android:background="#77FFFFFF" />
+        </RelativeLayout>
+    </FrameLayout>
+
+</FrameLayout>
