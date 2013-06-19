@@ -1,7 +1,10 @@
 	package aktiviteter;
 
 	import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Arrays;
+
+import org.apache.http.client.CircularRedirectException;
 
 
 	import com.androidquery.AQuery;
@@ -77,32 +80,48 @@ public class Historik_akt extends SlidingActivity {
 			//***********************Graf plotting*********************************
 	        // initialize our XYPlot reference:
 	        mySimpleXYPlot = (XYPlot) findViewById(R.id.mySimpleXYPlot);
-	 
-	        // Create a couple arrays of y-values to plot:
-	        Number[] series1Numbers = {7.5, 8, 5, 2, 7, 4};
-	        Number[] series2Numbers = {4, 6, 3, 8, 2, 10};
-	 
+	        
+	        //Viser X-aksen (Målinger) i int's
+	        mySimpleXYPlot.setDomainStep(XYStepMode.INCREMENT_BY_VAL, 1);
+	        
+	        // get rid of the decimal place on the display:
+	        mySimpleXYPlot.setDomainValueFormat(new DecimalFormat("#"));
+	        
+	        //Sætter labels
+	        mySimpleXYPlot.setDomainLabel("Målinger");
+	        mySimpleXYPlot.setRangeLabel("Blodsukkerværdier");
+	        mySimpleXYPlot.setTitle("Blodsukkerhistorik");
+	        
+			db.open();
+			Cursor cursor = db.getAlleMaalinger();
+			Number[] series1Numbers =new Number[cursor.getCount()];
+
+			int i =0;
+			if (cursor.moveToFirst()){//Starter fra sidste værdi i databasen (nyeste værdi)
+				
+				do{
+					series1Numbers[i] =cursor.getDouble(3);//Søjlen (nr 3) med blodsukkerværdier som skal plottes
+					i++;
+				}while(cursor.moveToNext());
+			}
+			db.close();
+	        
 	        // Turn the above arrays into XYSeries':
+	        if(series1Numbers!=null){
 	        XYSeries series1 = new SimpleXYSeries(
 	                Arrays.asList(series1Numbers),          // SimpleXYSeries takes a List so turn our array into a List
 	                SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, // Y_VALS_ONLY means use the element index as the x value
-	                "Series1");                             // Set the display title of the series
+	                "Blodsukkerkurve");                   // Set the display title of the series
 	 
-	        // same as above
-	        XYSeries series2 = new SimpleXYSeries(Arrays.asList(series2Numbers), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Series2");
-	 
+
 	        // Create a formatter to use for drawing a series using LineAndPointRenderer:
 	        LineAndPointFormatter series1Format = new LineAndPointFormatter(
-	                Color.rgb(0, 200, 0),                   // line color
-	                Color.rgb(0, 100, 0),                   // point color
+	        		Color.rgb(0, 0, 200),                   // line color
+	        		Color.rgb(0, 0, 100),                   // point color
 	                null);                                  // fill color (none)
 	 
 	        // add a new series' to the xyplot:
 	        mySimpleXYPlot.addSeries(series1, series1Format);
-	        
-	        // same as above:
-	        mySimpleXYPlot.addSeries(series2,
-	                new LineAndPointFormatter(Color.rgb(0, 0, 200), Color.rgb(0, 0, 100), null));
 	 
 	        // reduce the number of range labels
 	        mySimpleXYPlot.setTicksPerRangeLabel(3);
@@ -110,17 +129,17 @@ public class Historik_akt extends SlidingActivity {
 	        // by default, AndroidPlot displays developer guides to aid in laying out your plot.
 	        // To get rid of them call disableAllMarkup():
 	        mySimpleXYPlot.disableAllMarkup();
+	        }else{
+				Toast.makeText(getApplicationContext(),
+						"Tom\nDer er ikke målt noget blodsukkerværdier endnu" , Toast.LENGTH_LONG).show();
+	        }
 	        //****************************************************************************************
 	  		fm.beginTransaction()
 			.replace(R.id.content_frame, new MenuListFragment())
 			.commit();
-	  		
-	  		
 
 		}
 		
-
-
 
 			// Kaldes hver gang menuen skal vises
 			@Override

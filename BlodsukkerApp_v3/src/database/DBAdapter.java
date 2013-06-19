@@ -97,7 +97,7 @@ public class DBAdapter {
 	    }
 
 	    //---insert record into the database---
-	    public long maaling(int tid, int dato, double blodsukkervaerdi, String blodsukkerstatus, String note) 
+	    public long maaling(String tid, String dato, double blodsukkervaerdi, String blodsukkerstatus, String note) 
 	    {
 	        ContentValues initialValues = new ContentValues();
 	        initialValues.put(KEY_TID, tid);
@@ -107,6 +107,19 @@ public class DBAdapter {
 	        initialValues.put(KEY_NOTE, note);
 	        return db.insert(DATABASE_TABLE, null, initialValues);
 	    }
+	    
+//	    //---insert record into the database---
+//	    public long maaling(int tid, int dato, double blodsukkervaerdi, String blodsukkerstatus, String note) 
+//	    {
+//	        ContentValues initialValues = new ContentValues();
+//	        initialValues.put(KEY_TID, tid);
+//	        initialValues.put(KEY_DATO, dato);
+//	        initialValues.put(KEY_BLODSUKKERVAERDI, blodsukkervaerdi);
+//	        initialValues.put(KEY_BLODSUKKERSTATUS, blodsukkerstatus);
+//	        initialValues.put(KEY_NOTE, note);
+//	        return db.insert(DATABASE_TABLE, null, initialValues);
+//	    }
+
 
 	    //---deletes a particular record---
 	    public boolean sletMaaling(long rowSang) 

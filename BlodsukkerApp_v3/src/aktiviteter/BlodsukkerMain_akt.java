@@ -1,6 +1,7 @@
 package aktiviteter;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -18,6 +19,7 @@ import fragmenter.Guide_frag2;
 import fragmenter.Guide_frag3;
 import fragmenter.MenuListFragment;
 
+import android.R.integer;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -340,9 +342,75 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 			if (item.getItemId() == 101) {
 				seDB();
 			} else if (item.getItemId() == 102) {
-			//		---Tilføj en blodsukkermåling----
+//**************//Tilfældig time+minut*************************************************************
+				Random rand = new Random();
+				int laveste = 1;
+				int højeste = 24;
+				int time = rand.nextInt(højeste-laveste) + laveste;
+				String timeString = Integer.toString(time);;
+				
+				if(time<10){
+					timeString= String.format("%02d", time); //udylder ekstra nuller hvis tallet er under 10
+//					time= Integer.parseInt(temp);
+				}
+
+				
+				int laveste2 = 1;
+				int højeste2 = 60;
+				int minut = rand.nextInt(højeste2-laveste2) + laveste2;
+				String minutString = Integer.toString(minut);
+				
+				if(minut<10){
+					minutString= String.format("%02d", time);
+				}
+
+				String timeMinut = timeString+":"+minutString;
+//				Toast.makeText(getApplicationContext(), timeMinut, Toast.LENGTH_SHORT).show();
+//				int timeMinut = Integer.parseInt(Integer.toString(time)+Integer.toString(minut));
+//*************************************************************************************************
+//**************//Tilfældig dag+måned*************************************************************
+				int laveste3 = 1;
+				int højeste3 = 30;
+				int dag = rand.nextInt(højeste3-laveste3) + laveste3;
+				
+				int laveste4 = 1;
+				int højeste4 = 12;
+				int maaned = rand.nextInt(højeste4-laveste4) + laveste4;
+				String dagMaanedAar = Integer.toString(dag)+"/"+Integer.toString(maaned)+"-"+"2013";
+//				int dagMaanedAar = Integer.parseInt(Integer.toString(dag)+Integer.toString(maaned)+Integer.toString(2013));
+//				Toast.makeText(getApplicationContext(), dagMaanedAar, Toast.LENGTH_SHORT).show();
+//*************************************************************************************************
+//**************// Tilføj en tilfældigt blodsukkermålingværdi*********************************************
+				double laveste5= 1.0;
+				double højeste5 = 33.3;
+				double maaling = laveste5+(højeste5-laveste5)*rand.nextDouble();
+				int decimalPlace = 1;
+				BigDecimal bd = new BigDecimal(Double.toString(maaling));
+				bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP );
+				double maaling2= bd.doubleValue();
+
+				// Tilføj en tilfældig status
+				int laveste6 = 1;
+				int højeste6 = 3;
+				int tilfStatus = rand.nextInt(højeste6-laveste6) + laveste6;
+				String status="";
+				if (tilfStatus == 1) {
+					status = "Før måltid";
+				} else if (tilfStatus == 2) {
+					status = "Efter måltid";
+				}
+				// Tilføj en tilfældig note
+				int laveste7 = 1;
+				int højeste7 = 3;
+				int tilfNote = rand.nextInt(højeste7-laveste7) + laveste7;
+				String Note="";
+				if (tilfNote == 1) {
+					Note = "det gik godt";
+				} else if (tilfNote == 2) {
+					Note = "det gik skidt";
+				}
 				db.open();
-				long id = db.maaling(1337, 22042013, 4.1, "før måltid", "det gik godt");
+				long id = db.maaling(timeMinut, dagMaanedAar, maaling2, status, Note);
 				db.close();
 				seDB();
 			} 

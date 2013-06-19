@@ -104,7 +104,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@xml/blue_button"
                 android:onClick="click"
-                android:text="Restorér fra SD" />
+                android:text="Restorér fra SD kort" />
         </RelativeLayout>
     </RelativeLayout>
 

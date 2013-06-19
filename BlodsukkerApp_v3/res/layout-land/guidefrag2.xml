@@ -38,6 +38,7 @@
                 android:layout_width="66dp"
                 android:layout_height="66dp"
                 android:layout_below="@+id/guideText2"
+
                 android:layout_marginLeft="90dp"
                 android:src="@drawable/maaleenhed" />
 
@@ -48,7 +49,8 @@
                 android:layout_below="@+id/enhed_ikon"
                 android:layout_marginLeft="105dp"
                 android:rotation="315.0"
-                android:src="@drawable/strimmel" />
+                android:src="@drawable/strimmel" 
+                />
 
             <TextView
                 android:id="@+id/guideText2_2"
