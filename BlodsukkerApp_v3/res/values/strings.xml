@@ -21,7 +21,7 @@
     <string name="GuideFrag2_1">1. Put strimlen ind i måleenheden</string>
     <string name="GuideFrag2_2">2. Påfør en dråbe blod på teststrimlen</string>
     <string name="GuideFrag2_3">3. Efter måling, forbind måleenheden til telefonen og tryk fortsæt</string>
-    <string name="GuideFrag3_1">6,4</string>
+    <string name="GuideFrag3_1">Fejl</string>
     <string name="GuideFrag3_2">Tilføj note</string>
     <string name="GuideFrag3_3">Blodsukkerværdi:</string>
     
@@ -37,8 +37,8 @@
 	<string name="om_dialog">Denne app er udarbejdet i samarbejde med Bayer for at hjælpe 
 	    					diabetikere i deres hverdag. \n\n
 	    					
-	    					Applikationen er lavet som en del af et android-projekt til forårskurset 2013 af 
-        					Mobil Applikations Udvikling(VMAU) ved DTU campus Ballerup.
+	    					Applikationen er lavet som en del af et bachelor-projekt   
+        					ved DTU campus Ballerup.
       
         					\n\nDette er første release af app´en, så bugs kan være til stede og kan 
         					rapporteres til: pyemus@gmail.com</string>

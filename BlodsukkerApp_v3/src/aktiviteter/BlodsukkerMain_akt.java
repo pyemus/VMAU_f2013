@@ -263,17 +263,17 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
-		menu.setHeaderTitle("Ret måling");
-		menu.add(0, v.getId(), 0, "Opdatér Note");
+		menu.setHeaderTitle("Valgmuligheder:");
+		menu.add(0, v.getId(), 0, "Opdatér Note til måling");
 		menu.add(0, v.getId(), 0, "Slet Måling");
 	}
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		final AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-		int itemsTotal=blodsukkerliste.getCount()-1;
+		final int itemsTotal=blodsukkerliste.getCount()-1;
 		
-		if (item.getTitle().equals("Opdatér Note")) {
+		if (item.getTitle().equals("Opdatér Note til måling")) {
 
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("Noteændring");
@@ -289,8 +289,9 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 			    	
 			    	 String m_Text = input.getText().toString();
 						db.open();
-						db.updateMaalingNote(info.position, m_Text);
+						db.updateMaalingNote(itemsTotal-info.position+1, m_Text);
 						db.close();
+						seDB();
 			    }
 			});
 			builder.show();
@@ -304,6 +305,7 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 			db.open();
 			db.sletMaaling(itemsTotal-info.position+1);
 			db.close();
+			seDB();
 //			Toast.makeText(getApplication(), "Måling slettet "+info.position, Toast.LENGTH_SHORT).show();
 //			Toast.makeText(getApplication(), "Item:"+item +", Info:"+info.position, Toast.LENGTH_SHORT).show();
 //			Toast.makeText(getApplication(), ""+info.position+", "+blod, Toast.LENGTH_SHORT).show();
@@ -561,9 +563,11 @@ public class BlodsukkerMain_akt extends SlidingActivity {
 	public void Kald_hovedskærm(){
 		Guide_frag3 gf3 = new Guide_frag3();
 		
-//		if(!note_inn_textview.getText().equals("")){
-//			note_inn_textview.setText("Tilføjet note: "+note_input);
-//		}
+		int sidste =blodsukkerliste.getCount();
+		db.open();
+		db.updateMaalingNote(sidste-1, note_input);
+		db.close();
+		seDB();
 
 		fm.findFragmentById(R.id.guidefrag3);
 		FragmentTransaction ft = fm.beginTransaction();
